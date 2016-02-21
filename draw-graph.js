@@ -1,10 +1,17 @@
 function submit() {
 	draw_graph();
+
+	// set URL Parameters
+	var directed = $("#directed").prop('checked')?'1':'0';
+	var ignore = $("#ignore").prop('checked')?'1':'0';
+	var data = $("#data").val();
+	var url = location.pathname+"?"+"data="+encodeURIComponent(data)+"&directed="+directed+"&ignore="+ignore;
+	window.history.replaceState("","",url);
 }
 
 function draw_graph() {
 	var directed = $("#directed").prop('checked');
-	var ignore = $("#ignore").prop('checked')
+	var ignore = $("#ignore").prop('checked');
 
 	var data = $("#data").val();
 	data = data.split('\n');
@@ -56,9 +63,37 @@ function draw_graph() {
 }
 
 $(document).ready(function() {
+	// load URL Parameters
+	if (getUrlParameter("ignore")) {
+		$("#ignore").prop('checked',getUrlParameter("ignore")=="1");
+	}
+	if (getUrlParameter("directed")) {
+		$("#directed").prop('checked',getUrlParameter("directed")=="1");
+	}
+	if (getUrlParameter("data")) {
+		$("#data").val(getUrlParameter("data"));
+		draw_graph();
+	}
+
+	// Ctrl + Enter
 	$("#data").keydown(function(e) {
 		if (e.ctrlKey && e.keyCode == 13) {
 			submit();
 		}
 	});
 });
+
+var getUrlParameter = function getUrlParameter(sParam) {
+	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
+
+	for (i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
+
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : sParameterName[1];
+		}
+	}
+};

@@ -3,7 +3,7 @@ function submit() {
 }
 
 function draw_graph() {
-	var data = document.getElementById("data").value;
+	var data = $("#data").val();
 	data = data.split('\n');
 	for (var i in data) {
 		data[i] = data[i].trim().split(/ +/);
@@ -12,6 +12,7 @@ function draw_graph() {
 			data[i][1] = parseInt(data[i][1]);
 		}
 	}
+	var directed = $("#directed").prop('checked');
 
 	//create nodes
 	var nodes_set = new Set();
@@ -32,6 +33,9 @@ function draw_graph() {
 		var edge = {from: data[i][0], to: data[i][1]};
 		if (data[i].length >= 3) {
 			edge.label = data[i][2];
+		}
+		if (directed) {
+			edge.arrows = 'to';
 		}
 		edges.push(edge);
 	}

@@ -3,8 +3,14 @@ function submit() {
 }
 
 function draw_graph() {
+	var directed = $("#directed").prop('checked');
+	var ignore = $("#ignore").prop('checked')
+
 	var data = $("#data").val();
 	data = data.split('\n');
+	if (ignore && data.length >= 1) {
+		data[0] = "";
+	}
 	for (var i in data) {
 		data[i] = data[i].trim().split(/ +/);
 		if (data[i].length >= 2) {
@@ -12,7 +18,6 @@ function draw_graph() {
 			data[i][1] = parseInt(data[i][1]);
 		}
 	}
-	var directed = $("#directed").prop('checked');
 
 	//create nodes
 	var nodes_set = new Set();

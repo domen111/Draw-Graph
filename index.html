@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Draw Graph</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha256-oqtj+Pkh1c3dgdH6V9qoS7qwhOy2UZfyVK0qGLa9dCc= sha512-izanB/WZ07hzSPmLkdq82m5xS7EH/qDMgl5aWR37EII+rJOi5c6ouJ3PYnrw6K+DWQcnMZ+nO1NqDr6SBKLBDg==" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.14.0/vis.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.14.0/vis.min.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		#data {
+			height: 300px;
+		}
+		#graph {
+			height: 400px;
+			border: 2px solid lightgray;
+		}
+	</style>
+
+	<script src="draw-graph.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="page-header">
+			<h1 class="col-lg-offset-3">Draw Graph</h1>
+		</div>
+
+		<div class="col-lg-4">
+			<textarea class="form-control" id="data"></textarea><br>
+			<button class="btn btn-primary" onclick="submit();">Submit</button>
+			(Ctrl + Enter)
+		</div>
+
+		<div class="col-lg-6 well well-lg">
+			<div id="graph"></div>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -21,8 +21,8 @@ function draw_graph() {
 	for (var i in data) {
 		data[i] = data[i].trim().split(/ +/);
 		if (data[i].length >= 2) {
-			data[i][0] = parseInt(data[i][0]);
-			data[i][1] = parseInt(data[i][1]);
+			data[i][0] = data[i][0];
+			data[i][1] = data[i][1];
 		}
 	}
 

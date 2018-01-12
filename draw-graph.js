@@ -75,9 +75,9 @@ $(document).ready(function() {
 		draw_graph();
 	}
 
-	// Ctrl + Enter
+	// Ctrl / Cmd + Enter
 	$("#data").keydown(function(e) {
-		if (e.ctrlKey && e.keyCode == 13) {
+		if ((e.ctrlKey || e.metaKey) && e.keyCode == 13) {
 			submit();
 		}
 	});
